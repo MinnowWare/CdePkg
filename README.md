@@ -104,7 +104,7 @@ run on platforms w/o **CdeServices** protocol.)
 
 The functions below are already implemented and tested, every single one of them, except otherwise noted:
 
-[list of available functions](https://github.com/MinnowWare/CdePkg/implemented.md)
+[list of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
 
 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) has passed extensive
