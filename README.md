@@ -68,6 +68,11 @@ A *Hosted Environment* provides that obligatory features:
     * remove all tempfiles (not applicable for POST drivers)
     * close open files (not applicable for POST drivers)
 
+The command line parameter for each *CdePkg*Driver shall be able to be adjusted
+on a final system w/o recompiling the BIOS and updating the BIOS chip.
+This allows e.g. the support engineer to change BIOS behaviour on a (partially)
+defect system for repair/debug mode, enabling trace messages, excluding special
+(non-compliant)devices from beeing enumerated. 
 
 ## Implementation
 **CdePkg**'s functionality is composed of three components:
@@ -98,8 +103,8 @@ The **CdeLib** just provides small wrapper functions that invokes **CdeServices*
 ### **CdeLoadOptions**
 Each *CdePkg*Driver reports it's EfiCallerIdGuid while running through CRT0 to **CdeLoadOptions**.
 **CdeLoadOptions** provides a pointer to the matching "Command Line" from an simple EfiCallerIdGuid/CommandLine table.
-This is just a proposal. 
-
+This is just a proof of concept. In a real implementation, as mentioned above, the command line can be
+changed w/o BIOS update.
 
 ## Status
 The **CdeLib** and **CdeServices** are derived from it's companion project 
