@@ -108,7 +108,7 @@ The functions below are already implemented and tested, every single one of them
 
 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) has passed extensive
-tests to verify Microsoft's C Library compliance and is also approved in various real world applications.
+tests to verify Microsoft's C Library compatibility and is also approved in various real world applications.
 Therefore the **CdePkg**'s C library will be validated by simple tests only, in an upcoming **CdeValPkg**, for
 DXE, SMM and PEI each.
 
