@@ -95,6 +95,12 @@ ANSI C library functions in the UEFI drivers. This is done by implementing all-e
 in the **CdeServices** driver, that resides once in DXE-, SMM- and PEI-phase each.
 The **CdeLib** just provides small wrapper functions that invokes **CdeServices**.
 
+### **CdeLoadOptions**
+Each *CdePkg*Driver reports it's EfiCallerIdGuid while running through CRT0 to **CdeLoadOptions**.
+**CdeLoadOptions** provides a pointer to the matching "Command Line" from an simple EfiCallerIdGuid/CommandLine table.
+This is just a proposal. 
+
+
 ## Status
 The **CdeLib** and **CdeServices** are derived from it's companion project 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) but
