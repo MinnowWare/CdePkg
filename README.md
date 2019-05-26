@@ -103,7 +103,7 @@ The **CdeLib** just provides small wrapper functions that invokes **CdeServices*
 ### **CdeLoadOptions** / command line
 Each *CdePkg*Driver reports it's EfiCallerIdGuid while running through CRT0 to **CdeLoadOptions**.
 **CdeLoadOptions** provides a pointer to the matching "Command Line" from an simple EfiCallerIdGuid/CommandLine table
-within the file `CdeLoadOptionsDxe.h`, compiled ito the **CdeLoadOptions** driver binary.
+within the file `CdeLoadOptionsDxe.h`, compiled into the **CdeLoadOptions** driver binary.
 This is just a proof of concept. In a real implementation, as mentioned above, the command line can be
 changed w/o BIOS update.
 
