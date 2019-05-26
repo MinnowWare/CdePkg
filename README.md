@@ -49,7 +49,7 @@ strategy is used, as described below, that splits *wrapper libraries* from *work
 In the UEFI programming environment not even the smallest piece of code can be cross checked on a
 different platform, since function names differs in upper/lower case letters, format specifier for
 `Print()`-functions differs from C's `printf()`, a `scanf()` counterpart is absent, wideness
-of stringtypes differs from C functions.
+of stringtypes differs from corresponding [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) functions.
 
 Since the [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) specification leaves freedom for a particular library implementation in many cases
 (return values, flags, structure layout) but the chosen build and debug environment was VS2017 the original
