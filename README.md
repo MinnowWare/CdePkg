@@ -40,7 +40,7 @@ set of C-language operators (specifically `/ % << >>`) for the 32 bit code gener
 Furthermore the questions has to be answered, if UEFI based products can be improved regarding:
 * software quality (in terms of number of required updates during a life cycle)
 * development time
-* feature set (complexity and numbers)
+* feature set (complexity and plenty)
 * storage space needed in a flash part (the smaller the better)
 
 if a standardized programming interface as [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) is available, additionally a storage space optimization
