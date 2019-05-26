@@ -35,7 +35,7 @@ development process notably.*
 **CdePkg** is a feasibility study on how to provide a complete *Hosted Environment* 
 (according to [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) Specification chapter 5.1.2) including all instrisic functions, 
 that the compiler requires to be a full featured C-compiler, in particular the full
-set of C-language operators (specifically `/ % << >>`) for the 32 bit code generator, needed in PEI.
+set of C-language operators (specifically `/ % << >>` for 64 bit integers) for the 32 bit code generator, needed in PEI.
 
 Furthermore the questions has to be answered, if UEFI based products can be improved regarding:
 * software quality (in terms of number of required updates during a life cycle)
