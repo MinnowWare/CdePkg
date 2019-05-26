@@ -116,7 +116,7 @@ run on platforms w/o **CdeServices** protocol.)
 
 The functions below are already implemented and tested, every single one of them, except otherwise noted:
 
-[list of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
+[List of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
 
 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) has passed extensive
@@ -124,12 +124,14 @@ tests to verify Microsoft's C Library compatibility and is also approved in vari
 Therefore the **CdePkg**'s C library will be validated by simple tests only, in an upcoming **CdeValPkg**, for
 DXE, SMM and PEI each.
 
-## Known bugs
-* SMM support still missing
-* PEI support still missing
-* CRT0 startup code is still library code
-* local character tables still library code
-* buffered I/O core still library code
+## todo
+* add SMM support
+* add PEI support
+* move CRT0 startup code to **CdeServices**
+* move local character tables to **CdeServices**
+* move buffered I/O core to **CdeServices**
+* validate functions in DXE, SMM and PEI [List of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
+* complete library implementation
 
 # Revision history
 
