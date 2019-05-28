@@ -1,4 +1,4 @@
-    <table>
+<table>
         <tr> <th colspan="2">Diagnostics < assert.h ></th><th>TCL</th><th>DXE</th><th>SMM</th><th>PEI</th> </tr>
         <tr><td>void _assert (const char *,const char *,unsigned)</td><td>C90, MSFT implementation for assert macro</td><td>approved</td><TD>N/A</TD><TD>N/A</TD><TD>N/A</TD></tr>
         <tr><td>void _wassert (const wchar_t *,const wchar_t *,unsigned)</td><td>C90, MSFT implementation for assert macro</td><td>approved</td><TD>N/A</TD><TD>N/A</TD><TD>N/A</TD></tr>
@@ -208,4 +208,4 @@
         <tr><td>wint_t towupper(wint_t wc)</td><td>C95, is implemented</td><td>approved</td><TD>N/A</TD><TD>N/A</TD><TD>N/A</TD></tr>
         <tr><td>wint_t towctrans(wint_t wc, wctrans_t desc)</td><td>C95, is implemented</td><td>approved</td><TD>N/A</TD><TD>N/A</TD><TD>N/A</TD></tr>
         <tr><td>wctrans_t wctrans(const char *property)</td><td>C95, is implemented</td><td>approved</td><TD>N/A</TD><TD>N/A</TD><TD>N/A</TD></tr>
-    </table>
+</table>
