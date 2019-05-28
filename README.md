@@ -43,8 +43,8 @@ Furthermore the questions has to be answered, if UEFI based products can be impr
 * feature set (complexity and plenty)
 * storage space needed in a flash part (the smaller the better)
 
-if a standardized programming interface as [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) is available, additionally a storage space optimization
-strategy is used, as described below, that splits *wrapper libraries* from *worker drivers*.
+if a standardized programming interface as [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) is available, in conjunction with a storage space optimization
+strategy, as described below, that splits *wrapper libraries* from *worker drivers*.
 
 In the UEFI programming environment not even the smallest piece of code can be cross checked on a
 different platform, since function names differs in upper/lower case letters, format specifier for
@@ -121,7 +121,7 @@ The functions below are already implemented and tested, every single one of them
 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) has passed extensive
 tests to verify Microsoft's C Library compatibility and is also approved in various real world applications.
-Therefore the **CdePkg**'s C library will be validated by simple tests only, in an upcoming **CdeValPkg**, for
+Therefore the **CdePkg**'s C library will be validated by simple tests only, in an upcoming **CdeValidationPkg**, for
 DXE, SMM and PEI each.
 
 ## todo
