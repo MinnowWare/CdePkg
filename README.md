@@ -46,7 +46,7 @@ Furthermore the questions has to be answered, if UEFI based products can be impr
 if a standardized programming interface as [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) is available, in conjunction with a storage space optimization
 strategy, as described below, that splits *wrapper libraries* from *worker drivers*.
 
-In the UEFI programming environment not even the smallest piece of code can be cross checked on a
+In the UEFI programming environment not even the smallest piece of code can be cross developed on a
 different platform, since function names differs in upper/lower case letters, format specifier for
 `Print()`-functions differs from C's `printf()`, a `scanf()` counterpart is absent, wideness
 of stringtypes differs from corresponding [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) functions.
