@@ -8,7 +8,7 @@ for both UEFI POST and SHELL drivers.
 This is a reference implementation only, using the Microsoft C compiler, linker, library 
 manager and IDE that comes with Visual Studio 2017 for x86 platforms.
 
-A *Hosted Environment* for command line applications is standard, it's introduction for drivers is a novum. This also applies for the UEFI environment. But the wealth of computing power of current UEFI machines offers the chance to translate [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf)
+A *Hosted Environment* for command line applications is standard, its introduction for drivers is a novum. This also applies for the UEFI environment. But the wealth of computing power of current UEFI machines offers the chance to translate [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf)
 compatible sourcecode to run as a UEFI POST driver.
 
 With the growing complexity of firmware due to the requirements for both security and trust and the
@@ -97,7 +97,7 @@ in the **CdeServices** driver, that resides once in DXE-, SMM- and PEI-phase eac
 The **CdeLib** just provides small wrapper functions that invoke **CdeServices**.
 
 ### **CdeLoadOptions** / command line
-Each *CdePkg*Driver reports it's EfiCallerIdGuid while running through CRT0 to **CdeLoadOptions**.
+Each *CdePkg*Driver reports its EfiCallerIdGuid while running through CRT0 to **CdeLoadOptions**.
 **CdeLoadOptions** provides a pointer to the matching "Command Line" from an simple EfiCallerIdGuid/CommandLine table
 within the file `CdeLoadOptionsDxe.h`, compiled into the **CdeLoadOptions** driver binary.
 This is just a proof of concept. In a real implementation, as mentioned above, the command line can be
