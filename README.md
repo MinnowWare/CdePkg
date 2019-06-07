@@ -131,6 +131,8 @@ DXE, SMM and PEI each.
 * validate functions in DXE, SMM and PEI [List of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
 * complete library implementation
 
+[todo reminder](todoreminder.md)
+
 # Revision history
 
 ### 20190605
