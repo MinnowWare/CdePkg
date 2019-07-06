@@ -213,4 +213,5 @@ NOTE:
         <tr><td><a href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/toupper-toupper-towupper-toupper-l-towupper-l?view=vs-2019">wint_t towupper(wint_t wc)</a></td><td>C95, is implemented</td><td>a</td><TD>n/a</TD><TD>n/a</TD><TD>n/a</TD></tr>
         <tr><td><a href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/towctrans?view=vs-2019">wint_t towctrans(wint_t wc, wctrans_t desc)</a></td><td>C95, is implemented</td><td>a</td><TD>n/a</TD><TD>n/a</TD><TD>n/a</TD></tr>
         <tr><td><a href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/wctrans?view=vs-2019">wctrans_t wctrans(const char *property)</a></td><td>C95, is implemented</td><td>a</td><TD>n/a</TD><TD>n/a</TD><TD>n/a</TD></tr>
+
 </table>
