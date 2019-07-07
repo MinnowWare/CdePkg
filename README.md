@@ -6,7 +6,7 @@ C Development Environment Package for EDK2
 as specified by [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf),
 for both UEFI POST and SHELL drivers.
 This is a reference implementation only, using the Microsoft C compiler, linker, library 
-manager and IDE that comes with Visual Studio 2017 for x86 platforms.
+manager and IDE that comes with Visual Studio 2019 for x86 platforms.
 
 A *Hosted Environment* for command line applications is standard, its introduction for drivers is a novum. This also applies for the UEFI environment. But the wealth of computing power of current UEFI machines offers the chance to translate [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf)
 compatible sourcecode to run as a UEFI POST driver.
@@ -134,6 +134,9 @@ DXE, SMM and PEI each.
 [todo reminder](todoreminder.md)
 
 # Revision history
+
+### 20190706
+* add PEI support: CdeSrcPkg/0ea26421a591adcb4443e46913da2f429d7f312f
 
 ### 20190605
 * update CdeSrcPkg/e32a2359acc2c5916581207d5627c1f73a5d1ba6

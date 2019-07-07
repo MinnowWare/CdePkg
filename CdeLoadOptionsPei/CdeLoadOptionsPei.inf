@@ -1,9 +1,9 @@
 [Defines]
   INF_VERSION                    = 1.26
-  BASE_NAME                      = CdeLoadOptionsDxe
+  BASE_NAME                      = CdeLoadOptionsPei
   MODULE_UNI_FILE                = CdeLoadOptionsDxe.uni
-  FILE_GUID                      = CDE00011-E3A6-4B9A-AD76-1C0F23938A10
-  MODULE_TYPE                    = DXE_DRIVER
+  FILE_GUID                      = CDE00011-3212-4114-8E7E-7BDE2BFE14BC
+  MODULE_TYPE                    = PEIM
   VERSION_STRING                 = 1.0
   ENTRY_POINT                    = _Main
 
@@ -14,8 +14,8 @@
 #
 
 [Sources]
-	CdeLoadOptionsDxe.c
-	CdeLoadOptionsDxe.uni
+	CdeLoadOptionsPei.c
+	CdeLoadOptionsPei.uni
 
 [Packages]
 	CdePkg/CdePkg.dec
@@ -23,9 +23,10 @@
 	MdeModulePkg/MdeModulePkg.dec
 
 [LibraryClasses]
-	UefiLib
-	UefiDriverEntryPoint
+	  PeimEntryPoint
+
 [Guids]
+	gCdeEndOfDxeGuid
 	gEfiConsoleOutDeviceGuid                      ## SOMETIMES_PRODUCES ## UNDEFINED # protocol GUID installed on device handle
 	gEfiConsoleInDeviceGuid                       ## SOMETIMES_PRODUCES ## UNDEFINED # protocol GUID installed on device handle
 	gEfiConsoleOutDeviceGuid

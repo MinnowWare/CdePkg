@@ -20,11 +20,11 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6a9608db-e447-40ea-b6d7-98cb33a5d2a3}</ProjectGuid>
+    <ProjectGuid>{6d7fb80f-0760-4095-9fe2-0f461b49b299}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>CdeLoadOptionsDxe</RootNamespace>
+    <RootNamespace>CdeLoadOptionsPei</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
-    <ProjectName>CdeLoadOptionsDxe</ProjectName>
+    <ProjectName>CdeLoadOptionsPei</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -237,15 +237,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CdeLoadOptionsDxe.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CdeLoadOptionsDxe.inf" />
-    <None Include="CdeLoadOptionsDxe.uni" />
+    <None Include="CdeLoadOptionsPei.inf" />
+    <None Include="CdeLoadOptionsPei.uni" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\CDE.h" />
     <ClInclude Include="..\Include\CdeLoadOptions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CdeLoadOptionsPei.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

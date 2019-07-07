@@ -20,11 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{6a9608db-e447-40ea-b6d7-98cb33a5d2a3}</ProjectGuid>
+    <ProjectGuid>{cd22e2e2-9815-452d-8bb9-781d2b826534}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>CdeLoadOptionsDxe</RootNamespace>
+    <RootNamespace>CdeWelcomePei</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
-    <ProjectName>CdeLoadOptionsDxe</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -87,7 +86,6 @@
     </LinkIncremental>
     <IgnoreImportLibrary>false</IgnoreImportLibrary>
     <GenerateManifest />
-    <TargetExt>.efi</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>
@@ -120,9 +118,10 @@
     <Link>
       <SubSystem>EFI Boot Service Driver</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>$(SolutionDir)Edk2\CdePkg\CdeLib\ia32\CdeLib.lib %(AdditionalOptions)</AdditionalOptions>
       <AdditionalDependencies />
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-      <EntryPointSymbol>_Main</EntryPointSymbol>
+      <EntryPointSymbol>_MainEntryPointDxe</EntryPointSymbol>
       <RandomizedBaseAddress />
       <DataExecutionPrevention />
       <UACExecutionLevel />
@@ -168,9 +167,6 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Edk2\CdePkg\Include\;$(SolutionDir)Edk2\CdePkg\Include\VS2017;$(SolutionDir)Edk2\MdePkg\Include;$(SolutionDir)Edk2\MdePkg\Include\ia32</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <CompileAs>CompileAsC</CompileAs>
-      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>EFI Boot Service Driver</SubSystem>
@@ -185,10 +181,11 @@
       <UACUIAccess />
       <GenerateMapFile>true</GenerateMapFile>
       <LinkTimeCodeGeneration />
-      <EntryPointSymbol>_Main</EntryPointSymbol>
+      <EntryPointSymbol>_MainEntryPointDxe</EntryPointSymbol>
       <RandomizedBaseAddress />
       <DataExecutionPrevention />
       <ImageHasSafeExceptionHandlers />
+      <AdditionalOptions>$(SolutionDir)Edk2\CdePkg\CdeLib\ia32\CdeLib.lib %(AdditionalOptions)</AdditionalOptions>
       <OutputFile>$(OutDir)$(TargetName).efi</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -211,7 +208,6 @@
       <CompileAs>CompileAsC</CompileAs>
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
-      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>EFI Boot Service Driver</SubSystem>
@@ -225,11 +221,10 @@
       <LinkTimeCodeGeneration />
       <TypeLibraryResourceID />
       <RandomizedBaseAddress />
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <AdditionalOptions>$(SolutionDir)Edk2\CdePkg\CdeLib\x64\CdeLib.lib</AdditionalOptions>
       <AdditionalDependencies />
       <GenerateMapFile>true</GenerateMapFile>
-      <EntryPointSymbol>_Main</EntryPointSymbol>
+      <EntryPointSymbol>_MainEntryPointDxe</EntryPointSymbol>
       <EnableUAC />
       <DataExecutionPrevention />
       <OutputFile>$(OutDir)$(TargetName).efi</OutputFile>
@@ -237,15 +232,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CdeLoadOptionsDxe.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CdeLoadOptionsDxe.inf" />
-    <None Include="CdeLoadOptionsDxe.uni" />
+    <None Include="CdeWelcomePei.inf" />
+    <None Include="CdeWelcomePei.uni" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\CDE.h" />
-    <ClInclude Include="..\Include\CdeLoadOptions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CdeWelcomePei.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
