@@ -1,11 +1,11 @@
 [Defines]
   INF_VERSION                    = 1.26
-  BASE_NAME                      = CdeWelcomeDxe
-  MODULE_UNI_FILE                = CdeWelcomeDxe.uni
-  FILE_GUID                      = CDE000FF-0A15-41D7-9A7D-7111338CBD8B
-  MODULE_TYPE                    = DXE_DRIVER
+  BASE_NAME                      = CdeWelcomePei
+  MODULE_UNI_FILE                = CdeWelcomePei.uni
+  FILE_GUID                      = CDE000FF-E038-435A-8B68-34D7DFE1EF54
+  MODULE_TYPE                    = PEIM
   VERSION_STRING                 = 1.0
-  ENTRY_POINT                    = _MainEntryPointDxe
+  ENTRY_POINT                    = _MainEntryPointPei
 
 #
 # The following information is for reference only and not required by the build tools.
@@ -14,18 +14,16 @@
 #
 
 [Sources]
-	CdeWelcomeDxe.c
-	CdeWelcomeDxe.uni
+	CdeWelcomePei.c
+	CdeWelcomePei.uni
 
 [Packages]
 	MdePkg/MdePkg.dec
 	CdePkg/CdePkg.dec
 
 [LibraryClasses]
+	PeimEntryPoint
 	CdeLib
-	UefiLib
-	UefiDriverEntryPoint
-#	PcdLib
 
 
 [Guids]
@@ -35,7 +33,9 @@
 [Pcd]
 
 [Depex]
-	gCdeDxeProtocolGuid
+    gCdePeiProtocolGuid
+#	gCdeCommandLineProtocolGuid
+#	gCdeCommandLineProtocolGuid
 #	gCdeConsoleOutDeviceGuid
 #	gCdeDxeProtocolGuid AND
 #	gEfiEventReadyToBootGuid AND
@@ -47,5 +47,5 @@
 
 [Pcd]
 	gCdePkgTokenSpaceGuid.CdeDefaultCommandLine		## CONSUMES
-	gCdePkgTokenSpaceGuid.CdeWelcomeDxeCommandLine0	## CONSUMES
-	gCdePkgTokenSpaceGuid.CdeWelcomeDxeCommandLine1	## CONSUMES
+	gCdePkgTokenSpaceGuid.CdeWelcomePeiCommandLine0	## CONSUMES
+	gCdePkgTokenSpaceGuid.CdeWelcomePeiCommandLine1	## CONSUMES

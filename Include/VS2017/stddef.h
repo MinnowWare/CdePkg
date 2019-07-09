@@ -33,8 +33,8 @@
 	typedef   signed long long ptrdiff_t;
 	typedef unsigned long long size_t;
 #else
-	typedef  signed  long ptrdiff_t;
-	typedef unsigned long size_t;
+	typedef  signed  int ptrdiff_t;
+	typedef unsigned int size_t;
 #endif
 
 typedef short wchar_t;

@@ -18,7 +18,7 @@
 #define _CDE_H_
 //#TOCTRL NMOFINE
 
-extern char *gszCdeDriverName;
+extern char **gpszCdeDriverName;
 
 //
 // CDE MOdule FIle liNE (CDEMOFINE) trace support definitions
@@ -35,15 +35,15 @@ extern char *gszCdeDriverName;
 #define MOFINE_EXITONCOND   (1 << 7)
 #define MOFINE_DEADONCOND   (1 << 6)
 
-#define MFNNON(cond) gszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/ 0, 			/*condition*/0 != (cond),
-#define MFNINF(cond) gszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"INFO>", 	/*condition*/0 != (cond),
-#define MFNSUC(cond) gszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"SUCCESS>",	/*condition*/0 != (cond),
-#define MFNWAR(cond) gszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"WARNING>",	/*condition*/0 != (cond),
-#define MFNERR(cond) gszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ERROR>", 	/*condition*/0 != (cond),
-#define MFNFAT(cond) gszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"FATAL>", 	/*condition*/MOFINE_EXITONCOND | (0 != (cond)),
-#define MFNASS(cond) gszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ASSERT>", 	/*condition*/MOFINE_DEADONCOND | (0 != (cond)),
+#define MFNNON(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/ 0, 			/*condition*/0 != (cond),
+#define MFNINF(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"INFO>", 	/*condition*/0 != (cond),
+#define MFNSUC(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"SUCCESS>",	/*condition*/0 != (cond),
+#define MFNWAR(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"WARNING>",	/*condition*/0 != (cond),
+#define MFNERR(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ERROR>", 	/*condition*/0 != (cond),
+#define MFNFAT(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"FATAL>", 	/*condition*/MOFINE_EXITONCOND | (0 != (cond)),
+#define MFNASS(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ASSERT>", 	/*condition*/MOFINE_DEADONCOND | (0 != (cond)),
 
-int _CdeMofine(char* pszDriver, char* pszFile, int nLine, char* pszFunction, char* pszClass, int fTraceEn, char *pszFormat,...);
+int _CdeMofine(char** pszDriver, char* pszFile, int nLine, char* pszFunction, char* pszClass, int fTraceEn, char *pszFormat,...);
 
 
 #ifndef NMOFINE

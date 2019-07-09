@@ -15,20 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="CdeLoadOptionsDxe.inf" />
-    <None Include="CdeLoadOptionsDxe.uni" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="CdeLoadOptionsDxe.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <None Include="CdeWelcomePei.inf" />
+    <None Include="CdeWelcomePei.uni" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\CDE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\CdeLoadOptions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CdeWelcomePei.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
