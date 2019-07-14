@@ -65,7 +65,7 @@ A *Hosted Environment* provides the following obligatory features:
 NOTE: The additional `char *envp[]` and wide character version on `main()` is not part of the C specification
 * `argc` and `argv` are used for parameter passing, in **CdePkg** also for POST drivers<br>https://docs.microsoft.com/en-us/cpp/c-language/parsing-c-command-line-arguments?view=vs-2019
 * full blown ANSI C library
-* buffered I/O, that means that [`ungetc()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/ungetc-ungetwc?view=vs-2019) works on streams
+* buffered I/O, that means that [`ungetc()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/ungetc-ungetwc?view=vs-2019) works on streams, beside an improvement in speed
 * [`exit()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/exit-exit-exit?view=vs-2019) invocation on driver termination, that implies
     * run [`atexit()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/atexit?view=vs-2019)-registered functions
     * free allocated memory 
@@ -92,10 +92,10 @@ ANSI C library functions in the UEFI drivers. This is achieved by implementing a
 * `printf()`-family core
 * `scanf()`-family core
 * `realloc()` core (`malloc()`, `free()`, `realloc()` and `calloc()`)
-* `strcmp()`-family core (all str/wcs/mem n i functions)
-* `strcpy()`-family core (all str/wcs/mem n functions)
-* `strpbrk()`/`strspn()` -family core (all str/wcs pbrk- and spn- functions)
-* `strtok()`-family core (all str/wcs tok-functions)
+* `strcmp()`-family core (all `str`/`wcs`/`mem` `n` `i` functions)
+* `strcpy()`-family core (all `str`/`wcs`/`mem` `n` functions)
+* `strpbrk()`/`strspn()` -family core (all `str`/`wcs` `pbrk`- and `spn`- functions)
+* `strtok()`-family core (all `str`/`wcs` `tok`-functions)
 * CRT0 startup code for DXE, SMM, PEI
 * buffered I/O core (`fread()`, `fwrite()` and `ungetc()`)
 * locale character tables
