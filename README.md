@@ -62,11 +62,11 @@ Microsoft header files and prevent from documenting yet another C Library implem
 
 A *Hosted Environment* provides the following obligatory features: 
 * `int main(int argc,char **argv)` is the driver entry point
-* `argc` and `argv` are used for parameter passing, in **CdePkg** also for POST drivers
+* `argc` and `argv` are used for parameter passing, in **CdePkg** also for POST drivers<br>https://docs.microsoft.com/en-us/cpp/c-language/parsing-c-command-line-arguments?view=vs-2019
 * full blown ANSI C library
-* buffered I/O, that means that `ungetc()` works on streams
-* `exit()` invocation on driver termination, that implies
-    * run `atexit()`-registered functions
+* buffered I/O, that means that [`ungetc()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/ungetc-ungetwc?view=vs-2019) works on streams
+* [`exit()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/exit-exit-exit?view=vs-2019) invocation on driver termination, that implies
+    * run [`atexit()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/atexit?view=vs-2019)-registered functions
     * free allocated memory 
     * remove all tempfiles (not applicable for POST drivers)
     * close open files (not applicable for POST drivers)
