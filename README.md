@@ -61,7 +61,8 @@ This would provide the most relieable solution for cross development, enable the
 Microsoft header files and prevent from documenting yet another C Library implementation.
 
 A *Hosted Environment* provides the following obligatory features: 
-* `int main(int argc,char **argv)` is the driver entry point
+* [`int main(int argc,char **argv)`](https://docs.microsoft.com/en-us/cpp/c-language/main-function-and-program-execution?view=vs-2019) is the driver entry point<br>
+NOTE: The additional `char *envp[]` and wide character version on `main()` is not part of the C specification
 * `argc` and `argv` are used for parameter passing, in **CdePkg** also for POST drivers<br>https://docs.microsoft.com/en-us/cpp/c-language/parsing-c-command-line-arguments?view=vs-2019
 * full blown ANSI C library
 * buffered I/O, that means that [`ungetc()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/ungetc-ungetwc?view=vs-2019) works on streams
