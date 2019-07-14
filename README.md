@@ -19,7 +19,10 @@ need for speed in development, use of platform independent sourcecode allows:
 * use build in static code analysis capabilities of modern C compilers for standard C library functions<br>
   (NOTE: At build time C compiler can verify, validate and warn about parameter passing to `printf()` but not for EDK2's `Print()`)
 * allow appraisal of the source code quality by human professionals<br>
-  (they will be bemused to see e.g. `AsciiStrnCatS()` because `strncat()` is specified in C)
+  (they will be bemused to see e.g. `AsciiStrnCatS()` because `strncat()` is specified in C, same for:
+  * UnicodeVSPrint()/vswprintf()
+  * UnicodeSPrint()/swprintf()
+  * AsciiValueToString()/sprintf(String,"%d",Value)
 
 Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly by the compiler
 translated sourcecode and UEFI provides an independent set of functions, macros and type definitions,
