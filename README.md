@@ -13,20 +13,16 @@ compatible sourcecode to run as a UEFI POST driver.
 
 With the growing complexity of firmware due to the requirements for both security and trust and the
 need for speed in development, use of platform independent sourcecode allows:
-* reuse of validated C sourcecode from the open source community<br>
-  (as already done with _openSSL_ in the EDK2\CryptoPkg)
-* crossdevelopment of complex firmware code on non-UEFI platforms with superb build and debug capabilities<br>
-* use build in static code analysis capabilities of modern C compilers for standard C library functions<br>
-  (NOTE: At build time C compiler can verify, validate and warn about parameter passing to `printf()` but not for EDK2's `Print()`)
-* allow appraisal of the source code quality by human professionals<br>
-  (they will be bemused to see e.g. `AsciiStrnCatS()` because `strncat()` is specified in C, same for:
-  * UnicodeVSPrint()/vswprintf()
-  * UnicodeSPrint()/swprintf()
-  * AsciiValueToString()/sprintf(String,"%d",Value)
+* reuse of validated C sourcecode (from different origins, e.g. the open source community)[<sup>1</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-1.md)
+* crossdevelopment of complex firmware code on non-UEFI platforms with superb build and debug capabilities
+* use build in static code analysis capabilities of modern C compilers for standard C library functions[<sup>2</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-2.md)
+* allow appraisal of the source code quality by human professionals[<sup>3</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-3.md)
 
 Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly by the compiler
 translated sourcecode and UEFI provides an independent set of functions, macros and type definitions,
-[ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) and UEFI "OS" specific sourcecode can  coexist seamlessly. This allows a functional [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) prototype to adjust successively to real world driver requirements in the UEFI environment. A UEFI SHELL application might be an intermediate step for this process if the target is a DXE or SMM driver.
+[ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) and UEFI "OS" specific sourcecode can  coexist seamlessly. 
+This allows a functional [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) prototype to adjust successively 
+to real world driver requirements in the UEFI environment. A UEFI SHELL application might be an intermediate step for this process if the target is a DXE or SMM driver.
 
 In case, external UEFI libraries (created by the EDK build process) are not used in a particular UEFI
 driver (and therefore the *Library Constructor* process is not needed), a UEFI driver can be translated
