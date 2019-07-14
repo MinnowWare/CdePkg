@@ -134,8 +134,8 @@ DXE, SMM and PEI each.
 
 ## todo
 * add SMM support
-* 20190714 a̶d̶d̶ ̶P̶E̶I̶ ̶s̶u̶p̶p̶o̶r̶t̶
-̶* move CRT0 startup code to **CdeServices**
+* 20190714 a̵d̵d̵ ̵P̵E̵I̵ ̵s̵u̵p̵p̵o̵r̵t̵̵
+* move CRT0 startup code to **CdeServices**
 * move local character tables to **CdeServices**
 * move buffered I/O core to **CdeServices**
 * validate functions in DXE, SMM and PEI [List of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
