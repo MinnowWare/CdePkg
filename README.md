@@ -13,8 +13,13 @@ compatible sourcecode to run as a UEFI POST driver.
 
 With the growing complexity of firmware due to the requirements for both security and trust and the
 need for speed in development, use of platform independent sourcecode allows:
-* reuse of validated sourcecode, as already done in EDK2\CryptoPkg with openSSL
-* crossdevelopment of complex firmware code on non-UEFI platforms with superb build and debug capabilities
+* reuse of validated C sourcecode from the open source community<br>
+  (as already done with _openSSL_ in the EDK2\CryptoPkg)
+* crossdevelopment of complex firmware code on non-UEFI platforms with superb build and debug capabilities<br>
+* use build in static code analysis capabilities of modern C compilers for standard C library functions<br>
+  (NOTE: At build time C compiler can verify, validate and warn about parameter passing to `printf()` but not for EDK2's `Print()`)
+* allow appraisal of the source code quality by human professionals<br>
+  (they will be bemused to see e.g. `AsciiStrnCatS()` because `strncat()` is specified in C)
 
 Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly by the compiler
 translated sourcecode and UEFI provides an independent set of functions, macros and type definitions,
@@ -23,14 +28,16 @@ translated sourcecode and UEFI provides an independent set of functions, macros 
 In case, external UEFI libraries (created by the EDK build process) are not used in a particular UEFI
 driver (and therefore the *Library Constructor* process is not needed), a UEFI driver can be translated
 in the VS2017 build environment, which is much faster than the EDK build process (the driver's binary is not
-placed in the BIOS image, of course). *But the creation of syntactically correct sourcecode, using the
+placed in the BIOS image, of course).
+
+*But the creation of syntactically correct sourcecode, using the
 luxurious auto completion and mouse hover actions also for UEFI specific type definitions, enhances the
 development process notably.*
 
 ## Intention
 **CdePkg** is a feasibility study on how to provide a complete *Hosted Environment* 
 (according to [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) Specification chapter 5.1.2) including all instrisic functions, 
-which the compiler requires to be a full featured C-compiler, in particular the full
+which the compiler requires to be a **full featured C-compiler**, in particular the full
 set of C-language operators (specifically `/ % << >>` for 64 bit integers) for the 32 bit code generator, needed in PEI.
 
 Furthermore the questions has to be answered, if UEFI based products can be improved regarding
