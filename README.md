@@ -15,7 +15,7 @@ With the growing complexity of firmware due to the requirements for both securit
 need for speed in development, use of platform independent sourcecode allows:
 * reuse of validated C sourcecode (from different origins, e.g. the open source community)[<sup>1</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-1.md)
 * crossdevelopment of complex firmware code on non-UEFI platforms with superb build and debug capabilities
-* use build in static code analysis capabilities of modern C compilers for standard C library functions[<sup>2</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-2.md)
+* use static code analysis tools[<sup>2</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-2.md)
 * allow appraisal of the source code quality by human professionals[<sup>3</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-3.md)
 
 Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly by the compiler
