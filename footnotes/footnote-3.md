@@ -1,4 +1,4 @@
-may be they will be vexed to see a lot of recreations, with slightly different interfaces compared to Standard C:
+may be they will be astonished  to see a lot of recreations, with slightly different interfaces compared to Standard C:
 * `AsciiStrnCatS()` --> `strncat()`
 * `UnicodeVSPrint()` --> `vswprintf()`
 * `UnicodeSPrint()` --> `swprintf()`
