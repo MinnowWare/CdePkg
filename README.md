@@ -132,7 +132,7 @@ DXE, SMM and PEI each.
 
 ## todo
 * add SMM support
-* 20190714 a̵d̵d̵ ̵P̵E̵I̵ ̵s̵u̵p̵p̵o̵r̵t̵̵
+* 20190714 <del>add PEI support</del>
 * move CRT0 startup code to **CdeServices**
 * move local character tables to **CdeServices**
 * move buffered I/O core to **CdeServices**
