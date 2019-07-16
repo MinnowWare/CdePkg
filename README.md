@@ -144,7 +144,7 @@ DXE, SMM and PEI each.
 # Revision history
 
 ### 20190706
-* add PEI support: CdeSrcPkg/0ea26421a591adcb4443e46913da2f429d7f312f
+* add initial PEI Support, rudimentary functional range: CdeSrcPkg/0ea26421a591adcb4443e46913da2f429d7f312f
 
 ### 20190605
 * update CdeSrcPkg/e32a2359acc2c5916581207d5627c1f73a5d1ba6
