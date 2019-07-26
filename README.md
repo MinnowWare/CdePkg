@@ -142,6 +142,11 @@ DXE, SMM and PEI each.
 [todo reminder](todoreminder.md)
 
 # Revision history
+### 20190726\Branch CdeValPkg
+* initial version of branch CdeValPkg
+* add MFNBAR as bare/nacked parameter for CDEMOFINE macro
+* add clockDxe commandline to CdeLoadOptions.h
+* update CdeSrcPkg/b81394c620206ebbc300216652cd43d7f4ac94e3
 
 ### 20190706
 * add initial PEI Support, rudimentary functional range: CdeSrcPkg/0ea26421a591adcb4443e46913da2f429d7f312f
