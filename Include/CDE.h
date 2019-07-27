@@ -23,13 +23,13 @@ extern char** gpszCdeDriverName;
 //
 // CDE MOdule FIle liNE (CDEMOFINE) trace support definitions
 //
-#define MOFINE_NDRIVER		(1 << 0)
-#define MOFINE_NFILE 		(1 << 1)
-#define MOFINE_NLINE 		(1 << 2)
-#define MOFINE_NFUNCTION 	(1 << 3)
-#define MOFINE_NCLOCK 		(1 << 4)
-#define MOFINE_NSTDOUT 		(1 << 5)/*stderr instead*/
-#define MOFINE_NCLASS 		(1 << 6)/*stderr instead*/
+#define MOFINE_NDRIVER      (1 << 0)
+#define MOFINE_NFILE        (1 << 1)
+#define MOFINE_NLINE        (1 << 2)
+#define MOFINE_NFUNCTION    (1 << 3)
+#define MOFINE_NCLOCK       (1 << 4)
+#define MOFINE_NSTDOUT      (1 << 5)/*stderr instead*/
+#define MOFINE_NCLASS       (1 << 6)/*stderr instead*/
 #define MOFINE_RAWFORMAT    (INT_MIN)
 
 #define MOFINE_EXITONCOND   (1 << 7)
