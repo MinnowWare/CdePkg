@@ -142,6 +142,10 @@ DXE, SMM and PEI each.
 [todo reminder](todoreminder.md)
 
 # Revision history
+###	20190727\Branch CdeValPkg
+* add command line fir <em>clockPei</em>
+* add carrage return to CdeWelcomeDxe and -Pei
+
 ###	20190726\Branch CdeValPkg
 * initial version of branch CdeValPkg
 * add MFNBAR as bare/nacked parameter for CDEMOFINE macro
