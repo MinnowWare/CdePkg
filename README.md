@@ -142,6 +142,9 @@ DXE, SMM and PEI each.
 [todo reminder](todoreminder.md)
 
 # Revision history
+###	20190728\Branch CdeValPkg
+* add all <em>CTYPE.H</em>-functions for DXE
+
 ###	20190727\Branch CdeValPkg
 * add command line fir <em>clockPei</em>
 * add carrage return to CdeWelcomeDxe and -Pei

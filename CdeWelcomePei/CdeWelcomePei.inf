@@ -34,18 +34,6 @@
 
 [Depex]
     gCdePeiProtocolGuid
-#	gCdeCommandLineProtocolGuid
-#	gCdeCommandLineProtocolGuid
-#	gCdeConsoleOutDeviceGuid
-#	gCdeDxeProtocolGuid AND
-#	gEfiEventReadyToBootGuid AND
-#	gCdeEndOfDxeGuid
-
-#	AND
-#	gEfiSimpleFileSystemProtocolGuid
-[UserExtensions.TianoCore."ExtraFiles"]
 
 [Pcd]
 	gCdePkgTokenSpaceGuid.CdeDefaultCommandLine		## CONSUMES
-	gCdePkgTokenSpaceGuid.CdeWelcomePeiCommandLine0	## CONSUMES
-	gCdePkgTokenSpaceGuid.CdeWelcomePeiCommandLine1	## CONSUMES
