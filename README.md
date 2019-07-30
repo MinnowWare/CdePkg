@@ -142,6 +142,9 @@ DXE, SMM and PEI each.
 [todo reminder](todoreminder.md)
 
 # Revision history
+### 20190730\Branch CdeValPkg
+* add all <em>CTYPE.H()< / em> -functions to PEI post phase
+
 ###	20190728\Branch CdeValPkg
 * add all <em>CTYPE.H</em>-functions for DXE
 
