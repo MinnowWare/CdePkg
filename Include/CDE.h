@@ -16,10 +16,13 @@
 */
 #ifndef _CDE_H_
 #define _CDE_H_
+//
 //#TOCTRL NMOFINE
+//
 
-extern char** gpszCdeDriverName;
+#pragma warning (disable:4456) //warning C4456: declaration of 'x' hides previous local declaration
 
+extern char* gEfiCallerBaseName;
 //
 // CDE MOdule FIle liNE (CDEMOFINE) trace support definitions
 //
@@ -34,23 +37,41 @@ extern char** gpszCdeDriverName;
 
 #define MOFINE_EXITONCOND   (1 << 7)
 #define MOFINE_DEADONCOND   (1 << 6)
+//
+// MOFINE trace conficuration macro
+//
+#define MFNBAR(cond)/*  bare        */ NULL,                NULL,    0,       NULL,      /*string*/ 0,          /*condition*/0 != (cond),
+#define MFNNON(cond)/*  no class    */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/ 0,          /*condition*/0 != (cond),
+#define MFNINF(cond)/*  INFO        */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"INFO>", 	/*condition*/0 != (cond),
+#define MFNSUC(cond)/*  SUCCESS     */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"SUCCESS>",	/*condition*/0 != (cond),
+#define MFNWAR(cond)/*  WARNING     */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"WARNING>",	/*condition*/0 != (cond),
+#define MFNERR(cond)/*  ERROR       */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ERROR>", 	/*condition*/0 != (cond),
+#define MFNFAT(cond)/*  FATAL       */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"FATAL>", 	/*condition*/MOFINE_EXITONCOND | (0 != (cond)),
+#define MFNASS(cond)/*  ASSERT      */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ASSERT>", 	/*condition*/MOFINE_DEADONCOND | (0 != (cond)),
 
-#define MFNBAR(cond) NULL,             NULL,    0,       NULL,        /*string*/ 0,         /*condition*/0 != (cond),
-#define MFNNON(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/ 0,         /*condition*/0 != (cond),
-#define MFNINF(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"INFO>", 	/*condition*/0 != (cond),
-#define MFNSUC(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"SUCCESS>",	/*condition*/0 != (cond),
-#define MFNWAR(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"WARNING>",	/*condition*/0 != (cond),
-#define MFNERR(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ERROR>", 	/*condition*/0 != (cond),
-#define MFNFAT(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"FATAL>", 	/*condition*/MOFINE_EXITONCOND | (0 != (cond)),
-#define MFNASS(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ASSERT>", 	/*condition*/MOFINE_DEADONCOND | (0 != (cond)),
-
-int _CdeMofine(char** pszDriver, char* pszFile, int nLine, char* pszFunction, char* pszClass, int fTraceEn, char* pszFormat, ...);
+int _CdeMofine(char* pszDriver, char* pszFile, int nLine, char* pszFunction, char* pszClass, int fTraceEn, char* pszFormat, ...);
 
 
 #ifndef NMOFINE
-
 #define CDEMOFINE(fineonerrcond_msg) _CdeMofine fineonerrcond_msg /*FINEON COndition msg*/
-
+//
+//    NOTE: there is no comma placed between the MOFINE configuration macro MFNXXX() and the format string:
+//
+//        CDEMOFINE((MFNERR(1) /* <<<<<< NO COMMA HERE >>>>>> */ "##### Welcome to the jungle #####\n")); // ERROR
+//
+//      This is done to relieve porting to core trace functions with different parameter layout.
+//
+//      For core trace functions w/o file/line/function etc. parameter, the MFNXXX() needs to be modified only,
+//      not the representation of CDEMOFINE() in the sourcecode.
+//
+//      The UEFI DEBUG() macro is constrained to pass a DebugLevel before the format string.
+//
+//    CDEMOFINE((MFNINF(1) "##### Welcome to the jungle #####\n"));                             // INFO
+//    CDEMOFINE((MFNFAT(Status != EFI_SUCCESS)  "##### Welcome to the jungle #####\n"\n"));     // FATAL, only if Status != EFI_SUCCESS
+//    CDEMOFINE((MFNSUC(Status == EFI_SUCCESS)  "##### Welcome to the jungle #####\n"\n"));     // SUCCESS, only if Status == EFI_SUCCESS
+//    CDEMOFINE((MFNWAR(WARNLEVEL) "##### Welcome to the jungle #####\n"));                     // WARNING, if WARNLEVEL is enabled
+//
+//
 #else// NMOFINE
 
 #define CDEMOFINE(fineonerrcond_msg) ((void)0)

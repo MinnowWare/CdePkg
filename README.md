@@ -142,6 +142,14 @@ DXE, SMM and PEI each.
 [todo reminder](todoreminder.md)
 
 # Revision history
+
+### 20190811\Branch CdeValPkg
+* update `CdeLib.lib` and `CdeServicesXXXyy.efi` to 20190811/3adeb812a0fafb63f61bc4b3a41fc52bb1b70938
+  (unification of CDEMOFINE for all platforms, use gEfiCallerBaseName on all platforms for module name)
+* add validation driver/executables for all `ctype.h`- and `wctype.h`-related functions:
+    (ctypeALLPei, ctypeALLDxe, wctypeALLPei, wctypeALLDxe)
+* remove previously used single function test drivers
+
 ### 20190730\Branch CdeValPkg
 * add all <em>CTYPE.H()< / em> -functions to PEI post phase
 

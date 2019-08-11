@@ -52,6 +52,8 @@ wctrans_t wctrans( const char *property );
 wint_t  towlower( wint_t wc );
 wint_t  towupper( wint_t wc );
 
+wint_t towctrans(wint_t c, wctrans_t value);
+
 // Microsoft specific - start
 // Bit masks for the possible character types
 #define _UPPER   0x01     // uppercase letter
