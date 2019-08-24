@@ -143,6 +143,9 @@ DXE, SMM and PEI each.
 
 # Revision history
 
+### 20190824
+* Merge branch 'CdeValPkg'
+
 ### 20190811\Branch CdeValPkg
 * update `CdeLib.lib` and `CdeServicesXXXyy.efi` to 20190811/3adeb812a0fafb63f61bc4b3a41fc52bb1b70938
   (unification of CDEMOFINE for all platforms, use gEfiCallerBaseName on all platforms for module name)
@@ -151,10 +154,10 @@ DXE, SMM and PEI each.
 * remove previously used single function test drivers
 
 ### 20190730\Branch CdeValPkg
-* add all <em>CTYPE.H()< / em> -functions to PEI post phase
+* add all *CTYPE.H()*-functions to PEI post phase
 
 ###	20190728\Branch CdeValPkg
-* add all <em>CTYPE.H</em>-functions for DXE
+* add all *CTYPE.H*-functions for DXE
 
 ###	20190727\Branch CdeValPkg
 * add command line fir <em>clockPei</em>
