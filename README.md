@@ -143,6 +143,29 @@ DXE, SMM and PEI each.
 
 # Revision history
 
+### 20190811\Branch CdeValPkg
+* update `CdeLib.lib` and `CdeServicesXXXyy.efi` to 20190811/3adeb812a0fafb63f61bc4b3a41fc52bb1b70938
+  (unification of CDEMOFINE for all platforms, use gEfiCallerBaseName on all platforms for module name)
+* add validation driver/executables for all `ctype.h`- and `wctype.h`-related functions:
+    (ctypeALLPei, ctypeALLDxe, wctypeALLPei, wctypeALLDxe)
+* remove previously used single function test drivers
+
+### 20190730\Branch CdeValPkg
+* add all <em>CTYPE.H()< / em> -functions to PEI post phase
+
+###	20190728\Branch CdeValPkg
+* add all <em>CTYPE.H</em>-functions for DXE
+
+###	20190727\Branch CdeValPkg
+* add command line fir <em>clockPei</em>
+* add carrage return to CdeWelcomeDxe and -Pei
+
+###	20190726\Branch CdeValPkg
+* initial version of branch CdeValPkg
+* add MFNBAR as bare/nacked parameter for CDEMOFINE macro
+* add clockDxe commandline to CdeLoadOptions.h
+* update CdeSrcPkg/b81394c620206ebbc300216652cd43d7f4ac94e3
+
 ### 20190706
 * add initial PEI Support, rudimentary functional range: CdeSrcPkg/0ea26421a591adcb4443e46913da2f429d7f312f
 

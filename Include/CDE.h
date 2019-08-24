@@ -1,58 +1,80 @@
 /*!
 @copyright
     Copyright (c) 2019, MinnowWare. All rights reserved.
-    This program and the accompanying materials are licensed and made 
+    This program and the accompanying materials are licensed and made
     available under the terms and conditions of the BSD License
     which accompanies this distribution.  The full text of the license
     may be found at
     http://opensource.org/licenses/bsd-license.php
     THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
     WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
-@file 
+@file
     CDE.h
-@brief 
+@brief
     C Development Environment (CDE) base definitions
 @todo
 */
 #ifndef _CDE_H_
 #define _CDE_H_
+//
 //#TOCTRL NMOFINE
+//
 
-extern char **gpszCdeDriverName;
+#pragma warning (disable:4456) //warning C4456: declaration of 'x' hides previous local declaration
 
+extern char* gEfiCallerBaseName;
 //
 // CDE MOdule FIle liNE (CDEMOFINE) trace support definitions
 //
-#define MOFINE_NDRIVER		(1 << 0)
-#define MOFINE_NFILE 		(1 << 1)
-#define MOFINE_NLINE 		(1 << 2)
-#define MOFINE_NFUNCTION 	(1 << 3)
-#define MOFINE_NCLOCK 		(1 << 4)
-#define MOFINE_NSTDOUT 		(1 << 5)/*stderr instead*/
-#define MOFINE_NCLASS 		(1 << 6)/*stderr instead*/
+#define MOFINE_NDRIVER      (1 << 0)
+#define MOFINE_NFILE        (1 << 1)
+#define MOFINE_NLINE        (1 << 2)
+#define MOFINE_NFUNCTION    (1 << 3)
+#define MOFINE_NCLOCK       (1 << 4)
+#define MOFINE_NSTDOUT      (1 << 5)/*stderr instead*/
+#define MOFINE_NCLASS       (1 << 6)/*stderr instead*/
 #define MOFINE_RAWFORMAT    (INT_MIN)
 
 #define MOFINE_EXITONCOND   (1 << 7)
 #define MOFINE_DEADONCOND   (1 << 6)
+//
+// MOFINE trace conficuration macro
+//
+#define MFNBAR(cond)/*  bare        */ NULL,                NULL,    0,       NULL,      /*string*/ 0,          /*condition*/0 != (cond),
+#define MFNNON(cond)/*  no class    */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/ 0,          /*condition*/0 != (cond),
+#define MFNINF(cond)/*  INFO        */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"INFO>", 	/*condition*/0 != (cond),
+#define MFNSUC(cond)/*  SUCCESS     */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"SUCCESS>",	/*condition*/0 != (cond),
+#define MFNWAR(cond)/*  WARNING     */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"WARNING>",	/*condition*/0 != (cond),
+#define MFNERR(cond)/*  ERROR       */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ERROR>", 	/*condition*/0 != (cond),
+#define MFNFAT(cond)/*  FATAL       */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"FATAL>", 	/*condition*/MOFINE_EXITONCOND | (0 != (cond)),
+#define MFNASS(cond)/*  ASSERT      */ gEfiCallerBaseName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ASSERT>", 	/*condition*/MOFINE_DEADONCOND | (0 != (cond)),
 
-#define MFNNON(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/ 0, 			/*condition*/0 != (cond),
-#define MFNINF(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"INFO>", 	/*condition*/0 != (cond),
-#define MFNSUC(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"SUCCESS>",	/*condition*/0 != (cond),
-#define MFNWAR(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"WARNING>",	/*condition*/0 != (cond),
-#define MFNERR(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ERROR>", 	/*condition*/0 != (cond),
-#define MFNFAT(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"FATAL>", 	/*condition*/MOFINE_EXITONCOND | (0 != (cond)),
-#define MFNASS(cond) gpszCdeDriverName,__FILE__,__LINE__,__FUNCTION__,/*string*/"ASSERT>", 	/*condition*/MOFINE_DEADONCOND | (0 != (cond)),
-
-int _CdeMofine(char** pszDriver, char* pszFile, int nLine, char* pszFunction, char* pszClass, int fTraceEn, char *pszFormat,...);
+int _CdeMofine(char* pszDriver, char* pszFile, int nLine, char* pszFunction, char* pszClass, int fTraceEn, char* pszFormat, ...);
 
 
 #ifndef NMOFINE
-
-	#define CDEMOFINE(fineonerrcond_msg) _CdeMofine fineonerrcond_msg /*FINEON COndition msg*/
-
+#define CDEMOFINE(fineonerrcond_msg) _CdeMofine fineonerrcond_msg /*FINEON COndition msg*/
+//
+//    NOTE: there is no comma placed between the MOFINE configuration macro MFNXXX() and the format string:
+//
+//        CDEMOFINE((MFNERR(1) /* <<<<<< NO COMMA HERE >>>>>> */ "##### Welcome to the jungle #####\n")); // ERROR
+//
+//      This is done to relieve porting to core trace functions with different parameter layout.
+//
+//      For core trace functions w/o file/line/function etc. parameter, the MFNXXX() needs to be modified only,
+//      not the representation of CDEMOFINE() in the sourcecode.
+//
+//      The UEFI DEBUG() macro is constrained to pass a DebugLevel before the format string.
+//
+//    CDEMOFINE((MFNINF(1) "##### Welcome to the jungle #####\n"));                             // INFO
+//    CDEMOFINE((MFNFAT(Status != EFI_SUCCESS)  "##### Welcome to the jungle #####\n"\n"));     // FATAL, only if Status != EFI_SUCCESS
+//    CDEMOFINE((MFNSUC(Status == EFI_SUCCESS)  "##### Welcome to the jungle #####\n"\n"));     // SUCCESS, only if Status == EFI_SUCCESS
+//    CDEMOFINE((MFNWAR(WARNLEVEL) "##### Welcome to the jungle #####\n"));                     // WARNING, if WARNLEVEL is enabled
+//
+//
 #else// NMOFINE
 
-	#define CDEMOFINE(fineonerrcond_msg) ((void)0)
+#define CDEMOFINE(fineonerrcond_msg) ((void)0)
 
 #endif//ndef NMOFINE
 
@@ -74,29 +96,30 @@ int _CdeMofine(char** pszDriver, char* pszFile, int nLine, char* pszFunction, ch
 #define CDEPKG_TOKEN_SPACE_GUID         {0xCDE00005, 0x31d3, 0x40f5, { 0xb1, 0x0c, 0x53, 0x9b, 0x2d, 0xb9, 0x40, 0xcd }}
 #define CDE_END_OF_DXE_GUID             {0xCDE00006, 0x0c2a, 0x4cb4, { 0x82, 0xe4, 0x5a, 0x0b, 0x6f, 0x2f, 0x5e, 0xf2 }}
 #define CDE_UNKNOWN_DRIVER_FILE_GUID	{0xCDE00007, 0x0000, 0x0000, { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }}
+#define CDE_UNKNOWN_DRIVER_FILE_NAME	"CDE_UNKNOWN_DRIVER_FILE_NAME"
 
 //
 // LoadOptions / command line support
 //
 typedef struct _COMM_GUID {
-	unsigned long  Data1;
-	unsigned short Data2;
-	unsigned short Data3;
-	unsigned char  Data4[8];
+    unsigned long  Data1;
+    unsigned short Data2;
+    unsigned short Data3;
+    unsigned char  Data4[8];
 } COMM_GUID;
 
 typedef struct _COMMANDLINE {
-	COMM_GUID EfiCallerIdGuid;	/*	EFI_CALLER_ID_GUID from AutoGen.h 
-									gEfiCallerIdGuid from AutoGen.c
-									FILE_GUID from .INF	*/
-	char* szCommandLine;		/*  assigned command line includeing filename*/
+    COMM_GUID EfiCallerIdGuid;	/*	EFI_CALLER_ID_GUID from AutoGen.h
+                                    gEfiCallerIdGuid from AutoGen.c
+                                    FILE_GUID from .INF	*/
+    char* szCommandLine;		/*  assigned command line includeing filename*/
 }COMMANDLINE;
 
-typedef char* GETLOADOPTIONS (COMM_GUID* pEfiCallerIdGuid);
+typedef char* GETLOADOPTIONS (COMM_GUID * pEfiCallerIdGuid);
 
 typedef struct _CDE_LOADOPTIONS_PROTOCOL {
 
-	GETLOADOPTIONS* pGetLoadOptions;
+    GETLOADOPTIONS* pGetLoadOptions;
 
 }CDE_LOADOPTIONS_PROTOCOL;
 
