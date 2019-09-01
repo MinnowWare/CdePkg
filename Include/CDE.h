@@ -53,7 +53,7 @@ int _CdeMofine(char* pszDriver, char* pszFile, int nLine, char* pszFunction, cha
 
 
 #ifndef NMOFINE
-#define CDEMOFINE(fineonerrcond_msg) _CdeMofine fineonerrcond_msg /*FINEON COndition msg*/
+#define CDEMOFINE(cond_msg) _CdeMofine cond_msg /*MOdule-FIle-liNE COndition msg*/
 //
 //    NOTE: there is no comma placed between the MOFINE configuration macro MFNXXX() and the format string:
 //
