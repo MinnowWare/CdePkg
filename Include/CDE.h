@@ -54,7 +54,9 @@ int _CdeMofine(char* pszDriver, char* pszFile, int nLine, char* pszFunction, cha
 
 #ifndef NMOFINE
 #define CDEMOFINE(cond_msg) _CdeMofine cond_msg /*MOdule-FIle-liNE COndition msg*/
-//
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CDE MOdule FIle liNE (CDEMOFINE) trace macro
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 //    NOTE: there is no comma placed between the MOFINE configuration macro MFNXXX() and the format string:
 //
 //        CDEMOFINE((MFNERR(1) /* <<<<<< NO COMMA HERE >>>>>> */ "##### Welcome to the jungle #####\n")); // ERROR
