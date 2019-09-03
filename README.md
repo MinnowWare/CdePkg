@@ -102,7 +102,7 @@ ANSI C library functions in the UEFI drivers. This is achieved by implementing a
 in the **CdeServices** driver, that resides once in DXE-, SMM- and PEI-phase each.
 The **CdeLib** just provides small wrapper functions that invoke **CdeServices**.
 
-### **CdeServices** and **CdeLib** interface architecture view
+Interface architecture
 ![architectural view](archview.png)
 
 ### **CdeLoadOptions** / command line
