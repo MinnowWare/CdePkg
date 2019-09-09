@@ -1,14 +1,44 @@
 # CdePkg 
 C Development Environment Package for EDK2
+## Preface
+The programming language C is standartized by American National Standards Institute (ANSI) and
+International Organization for Standardization (ISO) first in 1989 and 1990.
+This is latest publicly available version of the [C99](http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1256.pdf) standard.
+The original [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf), also known as C89 or
+C90 is not officially available anymore.
 
+Both, the *language* (operators, expressions, declarations, specifiers, e.g. `if`, `while`,
+`+`, `&&`, `unsigned`, `char`, `struct` ...) and the *library* (functions, parameters, structures, macros, 
+e.g. `NDEBUG`, `raise()`, `scanf()`, `struct lconv`, `errno` ...) are specified in this document and
+are obligatory for an implementation that claims to meet the standard.
+
+In a particular C compiler / C library implementation both are completely coordinated to 
+each other.
+
+The Microsoft C/C++ compiler and it's library LIBCMT.lib as an implementation of this standard.
+It is primarily designed to create C/C++ programs and drivers for the Windows Operating System. 
+It is surely the most frequently used C compiler at all and continuesly enhanced, updated and
+maintained by Microsoft.
+
+This compiler is not a stand alone executable that simply translate C/C++ sourcecode to object 
+modules. It is closely entwined with different build environments (WDK/DDK, SDK) consisting of libraries,
+headerfiles, the operating system interface and platforms (x86-64/32, ARM64/32) to meet required code safety, code optimization 
+(size vs. speed in different shades ) and maintainability (e.g. for debug and trace purpose).
+
+The code generation and optimization aspects are not completely documented by Microsoft.
+But the Microsoft compiler tend to produce machine code, that relies on the presence of
+C library specified functions for storage space initialization, comparision and duplication 
+(`memset()`,`strcpy()`, `strcmp()`). Additionally some still undocumented function calls
+are produced by  the x86-32 code generator, when dealing with 64 bit integer types (`long long`),
+that came into the C language standard in 1999.
 ## Introduction
 **CdePkg**, C Development Environment Package, introduces the use of *Hosted Environment*,
-as specified by [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf),
+as specified by ANSI C,
 for both UEFI POST and SHELL drivers.
 This is a reference implementation only, using the Microsoft C compiler, linker, library 
 manager and IDE that comes with Visual Studio 2019 for x86 platforms.
 
-A *Hosted Environment* for command line applications is standard, its introduction for drivers is a novum. This also applies for the UEFI environment. But the wealth of computing power of current UEFI machines offers the chance to translate [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf)
+A *Hosted Environment* for command line applications is standard, its introduction for drivers is a novum. This also applies for the UEFI environment. But the wealth of computing power of current UEFI machines offers the chance to translate ANSI C
 compatible sourcecode to run as a UEFI POST driver.
 
 With the growing complexity of firmware due to the requirements for both security and trust and the
@@ -20,8 +50,8 @@ need for speed in development, use of platform independent sourcecode allows:
 
 Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly by the compiler
 translated sourcecode and UEFI provides an independent set of functions, macros and type definitions,
-[ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) and UEFI "OS" specific sourcecode can  coexist seamlessly. 
-This allows a functional [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) prototype to adjust successively 
+ANSI C and UEFI "OS" specific sourcecode can  coexist seamlessly. 
+This allows a functional ANSI C prototype to adjust successively 
 to real world driver requirements in the UEFI environment. A UEFI SHELL application might be an intermediate step for this process if the target is a DXE or SMM driver.
 
 In case, external UEFI libraries (created by the EDK build process) are not used in a particular UEFI
@@ -35,7 +65,7 @@ development process notably.*
 
 ## Intention
 **CdePkg** is a feasibility study on how to provide a complete *Hosted Environment* 
-(according to [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) Specification chapter 5.1.2) including all instrisic functions, 
+(according to ANSI C Specification chapter 5.1.2) including all instrisic functions, 
 which the compiler requires to be a **full featured C-compiler**, in particular the full
 set of C-language operators (specifically `/ % << >>` for 64 bit integers) for the 32 bit code generator, needed in PEI.
 
@@ -45,15 +75,15 @@ Furthermore the questions has to be answered, if UEFI based products can be impr
 * feature set (complexity and quantity)
 * storage space needed in a flash part (the smaller the better)
 
-if a standardized programming interface as [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) is available, in conjunction with a storage space optimization
+if a standardized programming interface as ANSI C is available, in conjunction with a storage space optimization
 strategy, as described below, that splits *wrapper libraries* from *worker drivers*.
 
 In the UEFI programming environment not even the smallest piece of code can be cross developed on a
 different platform, since function names differ in upper/lower case letters, format specifier for
 `Print()`-functions differ from C's `printf()`, a `scanf()` counterpart is absent, wideness
-of stringtypes differs from corresponding [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) functions.
+of stringtypes differs from corresponding ANSI C functions.
 
-Since in many cases the [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf) specification allows freedom for a particular library implementation 
+Since in many cases the ANSI C specification allows freedom for a particular library implementation 
 (return values, flags, structure layout) but the chosen build and debug environment is VS2017 the original
 Microsoft C Library functions had to be recreated, fully compatible, bug for bug (except otherwise noted). 
 This would provide the most relieable solution for cross development, enable the use of the original
