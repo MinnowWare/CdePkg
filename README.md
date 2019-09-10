@@ -172,7 +172,7 @@ The functions below are already implemented and tested, every single one of them
 [List of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
 
 
-[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) has passed extensive
+[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library#torito-c-library) has passed extensive
 tests to verify Microsoft's C Library compatibility and is also approved in various real world applications.
 Therefore the **CdePkg**'s C library will be validated by simple tests only, in the [**CdeValidationPkg**](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg), for
 DXE, SMM and PEI each.
