@@ -26,11 +26,12 @@ headerfiles, the operating system interface and platforms (x86-64/32, ARM64/32) 
 (size vs. speed in different shades ) and maintainability (e.g. for debug and trace purpose).
 
 The code generation and optimization aspects are not completely documented by Microsoft.
-But the Microsoft compiler tend to produce machine code, that relies on the presence of
+But the Microsoft compiler tends to produce machine code, that relies on the presence of
 C library specified functions for storage space initialization, comparision and duplication 
 (`memset()`,`strcpy()`, `strcmp()`). Additionally some still undocumented function calls
 are produced by  the x86-32 code generator, when dealing with 64 bit integer types (`long long`),
 that came into the C language standard in 1999.
+
 ## Introduction
 **CdePkg**, C Development Environment Package, introduces the use of *Hosted Environment*,
 as specified by ANSI C,
@@ -144,6 +145,19 @@ compiled into the [**CdeLoadOptions**](https://github.com/MinnowWare/CdePkg/blob
 **This is just a proof of concept. In a real implementation, as mentioned above, the command line can be
 changed without recompilation and BIOS update.**
 
+### boot flow architecture
+According to that explainations the boot flow is formt as:
+1. PEI CdeLoadOption (to provide the commandline to PEI drivers)
+2. PEI CdeServices (to provide the space optimized worker functions)
+3. PEI custom drivers (CdeServicesPei-based)
+4. DXE CdeLoadOption (to provide the commandline to DXE drivers)
+5. DXE CdeServices (to provide the space optimized worker functions)
+6. DXE custom drivers (CdeServicesDxe-based)
+7. BDS custom drivers
+8. UEFI Shell drivers (CdeServicesDxe-based, yet still Torito-C-Library-based)
+
+![bootflow view](CdePkgBootFlow.png)
+
 ## Status
 The **CdeLib** and **CdeServices** are derived from their companion project 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) but
@@ -158,7 +172,7 @@ The functions below are already implemented and tested, every single one of them
 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) has passed extensive
 tests to verify Microsoft's C Library compatibility and is also approved in various real world applications.
-Therefore the **CdePkg**'s C library will be validated by simple tests only, in an upcoming **CdeValidationPkg**, for
+Therefore the **CdePkg**'s C library will be validated by simple tests only, in the [**CdeValidationPkg**](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg), for
 DXE, SMM and PEI each.
 
 ## todo
