@@ -59,7 +59,7 @@ to real world driver requirements in the UEFI environment. A UEFI SHELL applicat
 
 In case, external UEFI libraries (created by the EDK build process) are not used in a particular UEFI
 driver (and therefore the *Library Constructor* process is not needed), a UEFI driver can be translated
-in the VS2017 build environment, which is much faster than the EDK build process (the driver's binary is not
+in the VS2019 build environment, which is much faster than the EDK build process (the driver's binary is not
 placed in the BIOS image, of course).
 
 *But the creation of syntactically correct sourcecode, using the
@@ -87,7 +87,7 @@ different platform, since function names differ in upper/lower case letters, for
 of stringtypes differs from corresponding ANSI C functions.
 
 Since in many cases the ANSI C specification allows freedom for a particular library implementation 
-(return values, flags, structure layout) but the chosen build and debug environment is VS2017 the original
+(return values, flags, structure layout) but the chosen build and debug environment is VS2019 the original
 Microsoft C Library functions had to be recreated, fully compatible, bug for bug (except otherwise noted). 
 This would provide the most relieable solution for cross development, enable the use of the original
 Microsoft header files and prevent from documenting yet another C Library implementation.
@@ -147,7 +147,7 @@ compiled into the [**CdeLoadOptions**](https://github.com/MinnowWare/CdePkg/blob
 **This is just a proof of concept. In a real implementation, as mentioned above, the command line can be
 changed without recompilation and BIOS update.**
 
-### boot flow architecture
+### Boot flow architecture
 According to that explainations the boot flow is formt as:
 1. PEI CdeLoadOption (to provide the commandline to PEI drivers)
 2. PEI CdeServices (to provide the space optimized worker functions)
