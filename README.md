@@ -1,4 +1,15 @@
 # CdePkg
+* [Preface](https://github.com/MinnowWare/CdePkg#preface)
+* [Introduction](https://github.com/MinnowWare/CdePkg#introduction)
+* [Intention](https://github.com/MinnowWare/CdePkg#intention)
+* [Implementation](https://github.com/MinnowWare/CdePkg#implementation)
+	* [Interface architecture](https://github.com/MinnowWare/CdePkg#interface-architecture)
+	* [CdeLoadOptions/command line](https://github.com/MinnowWare/CdePkg#cdeloadoptions--command-line)
+	* [Boot flow architecture](https://github.com/MinnowWare/CdePkg#boot-flow-architecture)
+* [Status](https://github.com/MinnowWare/CdePkg#status)
+	* [todo](https://github.com/MinnowWare/CdePkg#todo)
+* [Revision history](https://github.com/MinnowWare/CdePkg#revision-history)
+
 ![C](https://github.com/JoaquinConoBolillo/CdePkg/blob/master/C.png)
 
 C Development Environment Package for EDK2
@@ -177,7 +188,7 @@ tests to verify Microsoft's C Library compatibility and is also approved in vari
 Therefore the **CdePkg**'s C library will be validated by simple tests only, in the [**CdeValidationPkg**](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg), for
 DXE, SMM and PEI each.
 
-## todo
+### todo
 * add SMM support
 * 20190714 <del>add PEI support</del>
 * move CRT0 startup code to **CdeServices**
