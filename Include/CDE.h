@@ -64,9 +64,9 @@ int _CdeMofine(char* pszDriver, char* pszFile, int nLine, char* pszFunction, cha
 //      This is done to relieve porting to core trace functions with different parameter layout.
 //
 //      For core trace functions w/o file/line/function etc. parameter, the MFNXXX() needs to be modified only,
-//      not the representation of CDEMOFINE() in the sourcecode.
+//      not the signature of CDEMOFINE() in the sourcecode.
 //
-//      The UEFI DEBUG() macro is constrained to pass a DebugLevel before the format string.
+//      E.g. the UEFI DEBUG() macro is constrained to pass a DebugLevel before the format string.
 //
 //    CDEMOFINE((MFNINF(1) "##### Welcome to the jungle #####\n"));                             // INFO
 //    CDEMOFINE((MFNFAT(Status != EFI_SUCCESS)  "##### Welcome to the jungle #####\n"\n"));     // FATAL, only if Status != EFI_SUCCESS
