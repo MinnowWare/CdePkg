@@ -213,7 +213,7 @@ DXE, SMM and PEI each.
 
 
 
-# Revision history
+## Revision history
 
 ### 20190824
 * Merge branch 'CdeValPkg'
