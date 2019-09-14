@@ -199,8 +199,8 @@ DXE, SMM and PEI each.
 * complete library implementation
 
 [todo reminder](todoreminder.md)
-# Related Projects
-| related project|annotation|
+## Related Projects
+|Â related project|annotation|
 |:-|:-|
 |[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library#torito-c-library)|C Library for UEFI Shell only. All projects below are build on or derived from *Torito C Library*|
 |[Visual ANSI C for UEFI Shell](https://github.com/JoaquinConoBolillo/Visual-ANSI-C-for-UEFI-Shell#visual-ansi-c-for-uefi-shell)|Visual Studio for UEFI Shell for beginners.|
