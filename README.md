@@ -8,6 +8,7 @@
 	* [Boot flow architecture](https://github.com/MinnowWare/CdePkg#boot-flow-architecture)
 * [Status](https://github.com/MinnowWare/CdePkg#status)
 	* [todo](https://github.com/MinnowWare/CdePkg#todo)
+* [Related Projects](https://github.com/MinnowWare/CdePkg#related-projects)
 * [Revision history](https://github.com/MinnowWare/CdePkg#revision-history)
 
 ![C](https://github.com/JoaquinConoBolillo/CdePkg/blob/master/C.png)
@@ -198,6 +199,19 @@ DXE, SMM and PEI each.
 * complete library implementation
 
 [todo reminder](todoreminder.md)
+# Related Projects
+| related project|annotation|
+|:-|:-|
+|[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library#torito-c-library)|C Library for UEFI Shell only. All projects below are build on or derived from *Torito C Library*|
+|[Visual ANSI C for UEFI Shell](https://github.com/JoaquinConoBolillo/Visual-ANSI-C-for-UEFI-Shell#visual-ansi-c-for-uefi-shell)|Visual Studio for UEFI Shell for beginners.|
+|[Visual DOS Tools for UEFI Shell](https://github.com/JoaquinConoBolillo/Visual-DOS-Tools-for-UEFI-Shell#visual-dos-tools-for-uefi-shell)|more command implementation|
+|[Visual HWTools for UEFI Shell](https://github.com/MinnowWare/Visual-HWTools-for-UEFI-Shell#visual-hwtools-for-uefi-shell)|HWTools: PCI- and GPIOSpy for Baytrail. MemSpy for all.|
+|[UDK2018-Minnowboard](https://github.com/MinnowWare/UDK2018-MinnowBoard#udk2018-minnowboard--cdepkg)|Get the MinnowBoard running with latest released EDK sourcecode and demonstrate *CdePkg* on real hardware|
+|[edk2-UDK2018](https://github.com/MinnowWare/edk2-vUDK2018#edk2-udk2018--cdepkg)|Get the Emulation (Nt32Pkg) running with latest released EDK sourcecode and demonstrate *CdePkg* on the Windows Desktop|
+|[CdePkg](https://github.com/MinnowWare/CdePkg#cdepkg)|*Torito C Library* reworked for UEFI POST usage|
+|[CdeValidationPkg](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg)|Unit tests for *CdePkg*|
+
+
 
 # Revision history
 
