@@ -15,41 +15,40 @@
 
 C Development Environment Package for EDK2
 ## Preface
-The programming language C is standartized by American National Standards Institute (ANSI) and
+The programming language C is standardized by the American National Standards Institute (ANSI) and the
 International Organization for Standardization (ISO) first in 1989 and 1990.
-This is latest publicly available version of the [C99](http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1256.pdf) standard.
+The latest publicly available version of the standard from 1999 is to be found here: [C99](http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1256.pdf).
 The original [ANSI C](https://www.pdf-archive.com/2014/10/02/ansi-iso-9899-1990-1/ansi-iso-9899-1990-1.pdf), also known as C89 or
 C90 is not officially available anymore.
 
 Both, the *language* (operators, expressions, declarations, specifiers, e.g. `if`, `while`,
 `+`, `&&`, `unsigned`, `char`, `struct` ...) and the *library* (functions, parameters, structures, macros, 
-e.g. `NDEBUG`, `raise()`, `scanf()`, `struct lconv`, `errno` ...) are specified in this document (chapter 6 and 7)
+e.g. `NDEBUG`, `raise()`, `scanf()`, `struct lconv`, `errno` ...) are specified in this document (chapters 6 and 7)
 and are obligatory for an implementation that claims to meet the standard.
 
 In a particular C compiler / C library implementation both are completely coordinated to 
 each other.
 
-The Microsoft C/C++ compiler and it's library LIBCMT.lib as an implementation of this standard.
-It is primarily designed to create C/C++ programs and drivers for the Windows Operating System. 
-It is surely the most frequently used C compiler at all and continuesly enhanced, updated and
+The Microsoft C/C++ compiler and its library LIBCMT.lib is an implementation of this standard;
+it is primarily designed to create C/C++ programs and drivers for the Windows Operating System; 
+it is surely the most frequently used C compiler of them all and continuously enhanced, updated and
 maintained by Microsoft.
 
-This compiler is not a stand alone executable that simply translate C/C++ sourcecode to object 
+This compiler is not a stand alone executable that simply translates C/C++ sourcecode to object 
 modules. It is closely entwined with different build environments (WDK/DDK, SDK) consisting of libraries,
 headerfiles, the operating system interface and platforms (x86-64/32, ARM64/32) to meet required code safety, code optimization 
-(size vs. speed in different shades ) and maintainability (e.g. for debug and trace purpose).
+(size vs. speed in different shades) and maintainability (e.g. for debug and trace purpose).
 
-The code generation and optimization aspects are not completely documented by Microsoft.
-But the Microsoft compiler tends to produce machine code, that relies on the presence of
-C library specified functions for storage space initialization, comparision and duplication 
+The code generation and optimization aspects are not completely documented by Microsoft
+but the Microsoft compiler tends to produce machine code, that relies on the presence of
+C library specified functions for storage space initialization, comparison and duplication 
 (`memset()`,`strcpy()`, `strcmp()`). Additionally some still undocumented function calls
 are produced by  the x86-32 code generator, when dealing with 64 bit integer types (`long long`),
 that came into the C language standard in 1999.
 
 ## Introduction
 **CdePkg**, C Development Environment Package, introduces the use of *Hosted Environment*,
-as specified by ANSI C,
-for both UEFI POST and SHELL drivers.
+as specified by ANSI C, for both UEFI POST and SHELL drivers.
 This is a reference implementation only, using the Microsoft C compiler, linker, library 
 manager and IDE that comes with Visual Studio 2019 for x86 platforms.
 
@@ -57,24 +56,22 @@ A *Hosted Environment* for command line applications is standard, its introducti
 compatible sourcecode to run as a UEFI POST driver.
 
 With the growing complexity of firmware due to the requirements for both security and trust and the
-need for speed in development, use of platform independent sourcecode allows:
+need for speed in development, use of platform-independent sourcecode allows:
 * reuse of validated C sourcecode (from different origins, e.g. the open source community)[<sup>1</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-1.md)
 * crossdevelopment of complex firmware code on non-UEFI platforms with superb build and debug capabilities
-* use static code analysis tools[<sup>2</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-2.md)
-* allow appraisal of the source code quality by human professionals[<sup>3</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-3.md)
+* use of static code analysis tools[<sup>2</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-2.md)
+* appraisal of the source code quality by human professionals[<sup>3</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-3.md)
 
-Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly by the compiler
-translated sourcecode and UEFI provides an independent set of functions, macros and type definitions,
-ANSI C and UEFI "OS" specific sourcecode can  coexist seamlessly. 
-This allows a functional ANSI C prototype to adjust successively 
-to real world driver requirements in the UEFI environment. A UEFI SHELL application might be an intermediate step for this process if the target is a DXE or SMM driver.
+Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly by the compiler-translated sourcecode and UEFI provides an independent set of functions, macros and type definitions, ANSI C and UEFI "OS" specific sourcecode can coexist seamlessly. 
+This allows a functional ANSI C prototype to adjust successively to real world driver requirements in the UEFI environment. 
+A UEFI SHELL application might be an intermediate step for this process if the target is a DXE or SMM driver.
 
 In case, external UEFI libraries (created by the EDK build process) are not used in a particular UEFI
 driver (and therefore the *Library Constructor* process is not needed), a UEFI driver can be translated
 in the VS2019 build environment, which is much faster than the EDK build process (the driver's binary is not
 placed in the BIOS image, of course).
 
-*But the creation of syntactically correct sourcecode, using the
+*The creation of syntactically correct sourcecode, using the
 luxurious auto completion and mouse hover actions also for UEFI specific type definitions, enhances the
 development process notably.*
 
@@ -90,7 +87,7 @@ Furthermore the questions has to be answered, if UEFI based products can be impr
 * feature set (complexity and quantity)
 * storage space needed in a flash part (the smaller the better)
 
-if a standardized programming interface as ANSI C is available, in conjunction with a storage space optimization
+...if a standardized programming interface as ANSI C is available, in conjunction with a storage space optimization
 strategy, as described below, that splits *wrapper libraries* from *worker drivers*.
 
 In the UEFI programming environment not even the smallest piece of code can be cross developed on a
@@ -160,7 +157,9 @@ compiled into the [**CdeLoadOptions**](https://github.com/MinnowWare/CdePkg/blob
 changed without recompilation and BIOS update.**
 
 ### Boot flow architecture
-According to that explainations the boot flow is formt as:
+
+The Boot flow sequence consists of: 
+
 1. PEI CdeLoadOption (to provide the commandline to PEI drivers)
 2. PEI CdeServices (to provide the space optimized worker functions)
 3. PEI custom drivers (CdeServicesPei-based)
@@ -176,7 +175,7 @@ According to that explainations the boot flow is formt as:
 The **CdeLib** and **CdeServices** are derived from their companion project 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) but
 split into *wrapper*/*worker* architecture. (Internally [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library)
-was designed from the very beginning for that splitted architecture, but merged library and driver into one executable, to
+was designed from the very beginning for that splitted architecture, but  library and driver were merged into one executable, to
 run on platforms without **CdeServices** protocol.)
 
 The functions below are already implemented and tested, every single one of them, except otherwise noted:
@@ -186,8 +185,7 @@ The functions below are already implemented and tested, every single one of them
 
 [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library#torito-c-library) has passed extensive
 tests to verify Microsoft's C Library compatibility and is also approved in various real world applications.
-Therefore the **CdePkg**'s C library will be validated by simple tests only, in the [**CdeValidationPkg**](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg), for
-DXE, SMM and PEI each.
+Therefore the **CdePkg**'s C library will be validated by simple tests only, in the [**CdeValidationPkg**](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg), for DXE, SMM and PEI respectively.
 
 ### todo
 * add SMM support
@@ -202,13 +200,13 @@ DXE, SMM and PEI each.
 ## Related Projects
 | related project|annotation|
 |:-|:-|
-|[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library#torito-c-library)|C Library for UEFI Shell only. All projects below are build on or derived from *Torito C Library*|
+|[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library#torito-c-library)|C Library for UEFI Shell only. All projects below are built on or derived from *Torito C Library*|
 |[Visual ANSI C for UEFI Shell](https://github.com/JoaquinConoBolillo/Visual-ANSI-C-for-UEFI-Shell#visual-ansi-c-for-uefi-shell)|Visual Studio for UEFI Shell for beginners.|
 |[Visual DOS Tools for UEFI Shell](https://github.com/JoaquinConoBolillo/Visual-DOS-Tools-for-UEFI-Shell#visual-dos-tools-for-uefi-shell)|more command implementation|
 |[Visual HWTools for UEFI Shell](https://github.com/MinnowWare/Visual-HWTools-for-UEFI-Shell#visual-hwtools-for-uefi-shell)|HWTools: PCI- and GPIOSpy for Baytrail. MemSpy for all.|
-|[UDK2018-Minnowboard](https://github.com/MinnowWare/UDK2018-MinnowBoard#udk2018-minnowboard--cdepkg)|Get the MinnowBoard running with latest released EDK sourcecode and demonstrate *CdePkg* on real hardware|
-|[edk2-UDK2018](https://github.com/MinnowWare/edk2-vUDK2018#edk2-udk2018--cdepkg)|Get the Emulation (Nt32Pkg) running with latest released EDK sourcecode and demonstrate *CdePkg* on the Windows Desktop|
-|[CdePkg](https://github.com/MinnowWare/CdePkg#cdepkg)|*Torito C Library* reworked for UEFI POST usage|
+|[UDK2018-Minnowboard](https://github.com/MinnowWare/UDK2018-MinnowBoard#udk2018-minnowboard--cdepkg)|Gets the MinnowBoard running with the latest released EDK sourcecode and demonstrates *CdePkg* on real hardware|
+|[edk2-UDK2018](https://github.com/MinnowWare/edk2-vUDK2018#edk2-udk2018--cdepkg)|Gets the Emulation (Nt32Pkg) running with the latest released EDK sourcecode and demonstrates *CdePkg* on the Windows Desktop|
+|[CdePkg](https://github.com/MinnowWare/CdePkg#cdepkg)|*Torito C Library* redone for UEFI POST usage|
 |[CdeValidationPkg](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg)|Unit tests for *CdePkg*|
 
 
@@ -233,11 +231,11 @@ DXE, SMM and PEI each.
 
 ###	20190727\Branch CdeValPkg
 * add command line fir <em>clockPei</em>
-* add carrage return to CdeWelcomeDxe and -Pei
+* add carriage return to CdeWelcomeDxe and -Pei
 
 ###	20190726\Branch CdeValPkg
 * initial version of branch CdeValPkg
-* add MFNBAR as bare/nacked parameter for CDEMOFINE macro
+* add MFNBAR as bare/naked parameter for CDEMOFINE macro
 * add clockDxe commandline to CdeLoadOptions.h
 * update CdeSrcPkg/b81394c620206ebbc300216652cd43d7f4ac94e3
 
