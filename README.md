@@ -23,7 +23,7 @@ C90 is not officially available anymore.
 
 Both, the *language* (operators, expressions, declarations, specifiers, e.g. `if`, `while`,
 `+`, `&&`, `unsigned`, `char`, `struct` ...) and the *library* (functions, parameters, structures, macros, 
-e.g. `NDEBUG`, `raise()`, `scanf()`, `struct lconv`, `errno` ...) are specified in this document (chapters 6 and 7)
+e.g. `NDEBUG`, `CLOCKS_PER_SEC`, `raise()`, `scanf()`, `struct lconv`, `struct tm`, `errno` ...) are specified in this document (chapters 6 and 7)
 and are obligatory for an implementation that claims to meet the standard.
 
 In a particular C compiler / C library implementation both are completely coordinated to 
