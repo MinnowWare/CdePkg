@@ -66,15 +66,6 @@ Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly b
 This allows a functional ANSI C prototype to adjust successively to real world driver requirements in the UEFI environment. 
 A UEFI SHELL application might be an intermediate step for this process if the target is a DXE or SMM driver.
 
-In case, external UEFI libraries (created by the EDK build process) are not used in a particular UEFI
-driver (and therefore the *Library Constructor* process is not needed), a UEFI driver can be translated
-in the VS2019 build environment, which is much faster than the EDK build process (the driver's binary is not
-placed in the BIOS image, of course).
-
-*The creation of syntactically correct sourcecode, using the
-luxurious auto completion and mouse hover actions also for UEFI specific type definitions, enhances the
-development process notably.*
-
 ## Intention
 **CdePkg** is a feasibility study on how to provide a complete *Hosted Environment* 
 (according to ANSI C Specification chapter 5.1.2) including all instrisic functions, 
