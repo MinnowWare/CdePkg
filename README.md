@@ -1,15 +1,15 @@
 # CdePkg
-* [Preface](https://github.com/MinnowWare/CdePkg#preface)
-* [Introduction](https://github.com/MinnowWare/CdePkg#introduction)
-* [Intention](https://github.com/MinnowWare/CdePkg#intention)
-* [Implementation](https://github.com/MinnowWare/CdePkg#implementation)
-	* [Interface architecture](https://github.com/MinnowWare/CdePkg#interface-architecture)
-	* [CdeLoadOptions/command line](https://github.com/MinnowWare/CdePkg#cdeloadoptions--command-line)
-	* [Boot flow architecture](https://github.com/MinnowWare/CdePkg#boot-flow-architecture)
-* [Status](https://github.com/MinnowWare/CdePkg#status)
-	* [todo](https://github.com/MinnowWare/CdePkg#todo)
-* [Related Projects](https://github.com/MinnowWare/CdePkg#related-projects)
-* [Revision history](https://github.com/MinnowWare/CdePkg#revision-history)
+* [Preface](https://github.com/KilianKegel/CdePkg#preface)
+* [Introduction](https://github.com/KilianKegel/CdePkg#introduction)
+* [Intention](https://github.com/KilianKegel/CdePkg#intention)
+* [Implementation](https://github.com/KilianKegel/CdePkg#implementation)
+	* [Interface architecture](https://github.com/KilianKegel/CdePkg#interface-architecture)
+	* [CdeLoadOptions/command line](https://github.com/KilianKegel/CdePkg#cdeloadoptions--command-line)
+	* [Boot flow architecture](https://github.com/KilianKegel/CdePkg#boot-flow-architecture)
+* [Status](https://github.com/KilianKegel/CdePkg#status)
+	* [todo](https://github.com/KilianKegel/CdePkg#todo)
+* [Related Projects](https://github.com/KilianKegel/CdePkg#related-projects)
+* [Revision history](https://github.com/KilianKegel/CdePkg#revision-history)
 
 ![C](https://github.com/JoaquinConoBolillo/CdePkg/blob/master/C.png)
 
@@ -57,10 +57,10 @@ compatible sourcecode to run as a UEFI POST driver.
 
 With the growing complexity of firmware due to the requirements for both security and trust and the
 need for speed in development, use of platform-independent sourcecode allows:
-* reuse of validated C sourcecode (from different origins, e.g. the open source community)[<sup>1</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-1.md)
+* reuse of validated C sourcecode (from different origins, e.g. the open source community)[<sup>1</sup>](https://github.com/KilianKegel/CdePkg/blob/master/footnotes/footnote-1.md)
 * crossdevelopment of complex firmware code on non-UEFI platforms with superb build and debug capabilities
-* use of static code analysis tools[<sup>2</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-2.md)
-* appraisal of the source code quality by human professionals[<sup>3</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-3.md)
+* use of static code analysis tools[<sup>2</sup>](https://github.com/KilianKegel/CdePkg/blob/master/footnotes/footnote-2.md)
+* appraisal of the source code quality by human professionals[<sup>3</sup>](https://github.com/KilianKegel/CdePkg/blob/master/footnotes/footnote-3.md)
 
 Since the UEFI "OS" interface (DXE/SHELL/SMM and PEI) can be accessed directly by the compiler-translated sourcecode and UEFI provides an independent set of functions, macros and type definitions, ANSI C and UEFI "OS" specific sourcecode can coexist seamlessly. 
 This allows a functional ANSI C prototype to adjust successively to real world driver requirements in the UEFI environment. 
@@ -93,7 +93,7 @@ This would provide the most relieable solution for cross development, enable the
 Microsoft header files and prevent from documenting yet another C Library implementation.
 
 A *Hosted Environment* provides the following obligatory features: 
-* [`int main(int argc,char **argv)`](https://docs.microsoft.com/en-us/cpp/c-language/main-function-and-program-execution?view=vs-2019) is the driver entry point[<sup>4</sup>](https://github.com/MinnowWare/CdePkg/blob/master/footnotes/footnote-4.md)
+* [`int main(int argc,char **argv)`](https://docs.microsoft.com/en-us/cpp/c-language/main-function-and-program-execution?view=vs-2019) is the driver entry point[<sup>4</sup>](https://github.com/KilianKegel/CdePkg/blob/master/footnotes/footnote-4.md)
 * `argc` and `argv` are used for parameter passing, in **CdePkg** also for POST drivers<br>https://docs.microsoft.com/en-us/cpp/c-language/parsing-c-command-line-arguments?view=vs-2019
 * full blown ANSI C library
 * buffered I/O, that means that [`ungetc()`](https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/ungetc-ungetwc?view=vs-2019) works on streams, beside an improvement in speed
@@ -113,7 +113,7 @@ defect system for repair/debug mode, enabling trace messages, excluding special
 **CdePkg**'s functionality is composed of three components:
   1. the C Library **CdeLib**
   2. the service driver **CdeServices**
-  3. the POST command line reference implementation [**CdeLoadOptions**](https://github.com/MinnowWare/CdePkg/tree/master/CdeLoadOptionsDxe)
+  3. the POST command line reference implementation [**CdeLoadOptions**](https://github.com/KilianKegel/CdePkg/tree/master/CdeLoadOptionsDxe)
 
 all in 32 and 64 bit variants for DXE, SMM and PEI each.
 
@@ -141,8 +141,8 @@ The **CdeLib** just provides small wrapper functions that invoke **CdeServices**
 ### **CdeLoadOptions** / command line
 Each *CdePkg*Driver reports its EfiCallerIdGuid while running through CRT0 to **CdeLoadOptions**.
 **CdeLoadOptions** provides a pointer to the matching "Command Line" from an simple EfiCallerIdGuid/CommandLine table
-within the file [`CdeLoadOptions.h`](https://github.com/MinnowWare/CdePkg/blob/master/Include/CdeLoadOptions.h), 
-compiled into the [**CdeLoadOptions**](https://github.com/MinnowWare/CdePkg/blob/master/CdeLoadOptionsDxe/CdeLoadOptionsDxe.c) driver binary.
+within the file [`CdeLoadOptions.h`](https://github.com/KilianKegel/CdePkg/blob/master/Include/CdeLoadOptions.h), 
+compiled into the [**CdeLoadOptions**](https://github.com/KilianKegel/CdePkg/blob/master/CdeLoadOptionsDxe/CdeLoadOptionsDxe.c) driver binary.
 
 **This is just a proof of concept. In a real implementation, as mentioned above, the command line can be
 changed without recompilation and BIOS update.**
@@ -164,19 +164,19 @@ The Boot flow sequence consists of:
 
 ## Status
 The **CdeLib** and **CdeServices** are derived from their companion project 
-[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library) but
-split into *wrapper*/*worker* architecture. (Internally [Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library)
+[Torito C Library](https://github.com/KilianKegel/torito-C-Library) but
+split into *wrapper*/*worker* architecture. (Internally [Torito C Library](https://github.com/KilianKegel/torito-C-Library)
 was designed from the very beginning for that splitted architecture, but  library and driver were merged into one executable, to
 run on platforms without **CdeServices** protocol.)
 
 The functions below are already implemented and tested, every single one of them, except otherwise noted:
 
-[List of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
+[List of available functions](https://github.com/KilianKegel/CdePkg/blob/master/implemented.md)
 
 
-[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library#torito-c-library) has passed extensive
+[Torito C Library](https://github.com/KilianKegel/torito-C-Library#torito-c-library) has passed extensive
 tests to verify Microsoft's C Library compatibility and is also approved in various real world applications.
-Therefore the **CdePkg**'s C library will be validated by simple tests only, in the [**CdeValidationPkg**](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg), for DXE, SMM and PEI respectively.
+Therefore the **CdePkg**'s C library will be validated by simple tests only, in the [**CdeValidationPkg**](https://github.com/KilianKegel/CdeValidationPkg#cdevalidationpkg), for DXE, SMM and PEI respectively.
 
 ### todo
 * add SMM support
@@ -184,21 +184,21 @@ Therefore the **CdePkg**'s C library will be validated by simple tests only, in 
 * move CRT0 startup code to **CdeServices**
 * move local character tables to **CdeServices**
 * move buffered I/O core to **CdeServices**
-* validate functions in DXE, SMM and PEI [List of available functions](https://github.com/MinnowWare/CdePkg/blob/master/implemented.md)
+* validate functions in DXE, SMM and PEI [List of available functions](https://github.com/KilianKegel/CdePkg/blob/master/implemented.md)
 * complete library implementation
 
 [todo reminder](todoreminder.md)
 ## Related Projects
 | related project|annotation|
 |:-|:-|
-|[Torito C Library](https://github.com/JoaquinConoBolillo/torito-C-Library#torito-c-library)|C Library for UEFI Shell only. All projects below are built on or derived from *Torito C Library*|
-|[Visual ANSI C for UEFI Shell](https://github.com/JoaquinConoBolillo/Visual-ANSI-C-for-UEFI-Shell#visual-ansi-c-for-uefi-shell)|Visual Studio for UEFI Shell for beginners.|
-|[Visual DOS Tools for UEFI Shell](https://github.com/JoaquinConoBolillo/Visual-DOS-Tools-for-UEFI-Shell#visual-dos-tools-for-uefi-shell)|more command implementation|
-|[Visual HWTools for UEFI Shell](https://github.com/MinnowWare/Visual-HWTools-for-UEFI-Shell#visual-hwtools-for-uefi-shell)|HWTools: PCI- and GPIOSpy for Baytrail. MemSpy for all.|
-|[UDK2018-Minnowboard](https://github.com/MinnowWare/UDK2018-MinnowBoard#udk2018-minnowboard--cdepkg)|Gets the MinnowBoard running with the latest released EDK sourcecode and demonstrates *CdePkg* on real hardware|
-|[edk2-UDK2018](https://github.com/MinnowWare/edk2-vUDK2018#edk2-udk2018--cdepkg)|Gets the Emulation (Nt32Pkg) running with the latest released EDK sourcecode and demonstrates *CdePkg* on the Windows Desktop|
-|[CdePkg](https://github.com/MinnowWare/CdePkg#cdepkg)|*Torito C Library* redone for UEFI POST usage|
-|[CdeValidationPkg](https://github.com/MinnowWare/CdeValidationPkg#cdevalidationpkg)|Unit tests for *CdePkg*|
+|[Torito C Library](https://github.com/KilianKegel/torito-C-Library#torito-c-library)|C Library for UEFI Shell only. All projects below are built on or derived from *Torito C Library*|
+|[Visual ANSI C for UEFI Shell](https://github.com/KilianKegel/Visual-ANSI-C-for-UEFI-Shell#visual-ansi-c-for-uefi-shell)|Visual Studio for UEFI Shell for beginners.|
+|[Visual DOS Tools for UEFI Shell](https://github.com/KilianKegel/Visual-DOS-Tools-for-UEFI-Shell#visual-dos-tools-for-uefi-shell)|more command implementation|
+|[Visual HWTools for UEFI Shell](https://github.com/KilianKegel/Visual-HWTools-for-UEFI-Shell#visual-hwtools-for-uefi-shell)|HWTools: PCI- and GPIOSpy for Baytrail. MemSpy for all.|
+|[UDK2018-Minnowboard](https://github.com/KilianKegel/UDK2018-MinnowBoard#udk2018-minnowboard--cdepkg)|Gets the MinnowBoard running with the latest released EDK sourcecode and demonstrates *CdePkg* on real hardware|
+|[edk2-UDK2018](https://github.com/KilianKegel/edk2-vUDK2018#edk2-udk2018--cdepkg)|Gets the Emulation (Nt32Pkg) running with the latest released EDK sourcecode and demonstrates *CdePkg* on the Windows Desktop|
+|[CdePkg](https://github.com/KilianKegel/CdePkg#cdepkg)|*Torito C Library* redone for UEFI POST usage|
+|[CdeValidationPkg](https://github.com/KilianKegel/CdeValidationPkg#cdevalidationpkg)|Unit tests for *CdePkg*|
 
 
 
